@@ -52,7 +52,7 @@ function Brute_Trenchgun:GetSkillEffect(p1, p2)
 	if self.Push == 1 then
 		damage.iPush = dir
 	end
-	ret:AddProjectile(damage, self.ProjectileArt, NO_DELAY)--"effects/shot_mechtank")
+	ret:AddProjectile(damage, self.ProjectileArt, FULL_DELAY)--"effects/shot_mechtank")
 	ret:AddDamage(wall_spawn);
 	return ret
 end

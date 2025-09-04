@@ -34,9 +34,9 @@ function Cleaner:GetSkillEffect(p1, p2)
 	local dir = GetDirection(p2 - p1)
 
 	if Board:IsPawnTeam(p2,TEAM_PLAYER) then
+		damage = SpaceDamage(p2, self.Amount)
 		damage.iFire = EFFECT_REMOVE
 		damage.iAcid = EFFECT_REMOVE
-		damage = SpaceDamage(p2, self.Amount)
 		if self.Boost then
 			ret:AddScript(string.format("Board:GetPawn(%s):SetBoosted(true)", p2:GetString()))
 		end
