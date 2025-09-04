@@ -40,6 +40,9 @@ function Cleaner:GetSkillEffect(p1, p2)
 		if self.Boost then
 			ret:AddScript(string.format("Board:GetPawn(%s):SetBoosted(true)", p2:GetString()))
 		end
+	elseif Board:IsPawnTeam(p2, TEAM_ENEMY) then
+		damage.iAcid = EFFECT_CREATE
+		damage.iFire = EFFECT_CREATE
 	end
 	damage.iPush = dir
 	damage.sAnimation = "airpush_"..dir

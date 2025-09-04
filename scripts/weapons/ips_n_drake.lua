@@ -13,7 +13,7 @@ Brute_Trenchgun = Skill:new	{
 	Explo = "explopush1_",
 	Icon = "weapons/brute_tankmech.png",
 	Sound = "/general/combat/explode_small",
-	Damage = 1,
+	Damage = 2,
 	Push = 0,
 	PowerCost = 0, --AE Change
 	Upgrades = 2,
@@ -58,13 +58,13 @@ function Brute_Trenchgun:GetSkillEffect(p1, p2)
 end
 -- +2 damage
 Brute_Trenchgun_A = Brute_Trenchgun:new{
-	Damage = 3
+	Damage = 4
 }
 -- PushBack
 Brute_Trenchgun_B = Brute_Trenchgun:new{
 	Push = 1
 }
 Brute_Trenchgun_AB = Brute_Trenchgun:new{
-	Damage = 3,
+	Damage = 4,
 	Push = 1
 }

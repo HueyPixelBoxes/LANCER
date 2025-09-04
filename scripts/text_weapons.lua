@@ -1,7 +1,7 @@
 local weaponTexts = {
     -- IPS-N 
     Prime_SwordGrapple_Name = "Assault Grapple",
-    Prime_SwordGrapple_Description = "Use a grapple to pull Mech towards objects, or units to the Mech.",
+    Prime_SwordGrapple_Description = "Use a grapple to pull Mech towards objects",
     Prime_SwordGrapple_Upgrade1 = "+2 Tiles",
     Prime_SwordGrapple_Upgrade2 = "Buildings Immune",
     Prime_SwordGrapple_A_UpgradeDescription = "Attack 2 tiles adjacent to enemies.",
@@ -15,7 +15,7 @@ local weaponTexts = {
     Brute_Trenchgun_B_UpgradeDescription = "This attack also pushes its target.",
 
     Cleaner_Name = "Whitewash Cleaner",
-    Cleaner_Description = "Clear all negative effects from adjacent allied Mechs and push them away",
+    Cleaner_Description = "Clear all negative effects from allies or apply Fire and Burn to Veks, push both away",
     Cleaner_Upgrade1 = "Ally Gain Boost",
     Cleaner_Upgrade2 = "Repair Allies",
     Cleaner_A_UpgradeDescription = "Cleansed allies gain Boost.",
