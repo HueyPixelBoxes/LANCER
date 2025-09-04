@@ -111,9 +111,9 @@ Prime_SwordGrapple_A = Prime_SwordGrapple:new{
 	TipImage = {
 		Unit = Point(2,2),
 		Target = Point(2,0),
-		EnemyL = Point(1,1),
+		EnemyL = Point(1,0),
 		EnemyC = Point(2,0),
-		EnemyR = Point(3,1),
+		EnemyR = Point(3,0),
 	}
 }
 --Add Grid immune--
