@@ -24,7 +24,7 @@ Cleaner = Skill:new{
 		Unit = Point(2,2),
 		Friendly = Point(2,1),
 		Target = Point(2,1),
-		Acid = Point(2,1)
+		Fire = Point(2,1)
 	}
 }
 
