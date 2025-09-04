@@ -41,7 +41,7 @@ function Prime_SwordGrapple:GetTargetArea(point)-- point is origin ?
 			this_path[#this_path+1] = target -- #this_path is length of the array, append target tile into the array
 			target = target + DIR_VECTORS[dir] --move up the target farther from origin
 		end
-		if Board:IsValid(target) and target:Manhattan(point) > 1 then
+		if Board:IsValid(target) then
 			--if the next target inside board and distance is more than 1 tile, add it
 			-- Manhattan distance or taxicav distance calculate by |x1-x2| + |y1-y2|
 			this_path[#this_path+1] = target

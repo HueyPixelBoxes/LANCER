@@ -25,8 +25,8 @@ Brute_Trenchgun = Skill:new	{
 	ZoneTargeting = ZONE_DIR,
 	TipImage = StandardTips.Ranged,
 }
-function Brute_Trenchgun:GetTargetArea(p1)
-	return Board:GetSimpleReachable(p1, self.PathSize, self.CornersAllowed)
+function Brute_Trenchgun:GetTargetArea(point)
+	return Board:GetSimpleReachable(point, self.PathSize, self.CornersAllowed)
 end
 function Brute_Trenchgun:GetSkillEffect(p1, p2)
 	local ret = SkillEffect()
@@ -52,9 +52,8 @@ function Brute_Trenchgun:GetSkillEffect(p1, p2)
 	if self.Push == 1 then
 		damage.iPush = dir
 	end
-	ret:AddDamage(wall_spawn);
 	ret:AddProjectile(damage, self.ProjectileArt, NO_DELAY)--"effects/shot_mechtank")
-
+	ret:AddDamage(wall_spawn);
 	return ret
 end
 -- +2 damage
