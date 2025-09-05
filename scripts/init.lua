@@ -12,6 +12,11 @@ local mod = {
 
 -- load .lua files in the path --
 function mod:init()
+    require(self.scriptPath.."FURL")(self, {
+        {},
+        {}
+    })
+
     require(self.scriptPath.."pawns")
     require(self.scriptPath.."weapons/ips_n_blackbeard")
     require(self.scriptPath.."weapons/ips_n_drake")
