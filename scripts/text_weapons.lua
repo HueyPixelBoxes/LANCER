@@ -15,7 +15,7 @@ local weaponTexts = {
     Brute_Trenchgun_B_UpgradeDescription = "This attack also pushes its target.",
 
     Cleaner_Name = "Whitewash Cleaner",
-    Cleaner_Description = "Clear all negative effects from allies or apply Fire and Burn to Veks, push both away",
+    Cleaner_Description = "Clear all negative effects from allies or apply Fire and A.C.I.D to Veks, push both away",
     Cleaner_Upgrade1 = "Ally Gain Boost",
     Cleaner_Upgrade2 = "Repair Allies",
     Cleaner_A_UpgradeDescription = "Cleansed allies gain Boost.",

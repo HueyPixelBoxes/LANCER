@@ -100,7 +100,7 @@ function Prime_SwordGrapple:GetSkillEffect(p1,p2)
 	end
 
 	sword_damage.loc = sword_t
-	sword_damage.sAnimation = not self.Cleave and "explopunch1_"..direction or "explosword_"..direction -- sword animation if cleave
+	sword_damage.sAnimation = not self.Cleave and "explospear1_"..direction or "explosword_"..direction -- sword animation if cleave
 	-- Sword Part p2 - DIR_VECTORS[direction], 
 	ret:AddDamage(sword_damage)
 	return ret
