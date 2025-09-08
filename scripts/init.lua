@@ -21,7 +21,7 @@ end
 
 --for what happened when mod are loaded--
 function mod:load(options, version)
-    modApi:addSquad({"IPS_N Squad","BlackBeard","Drake","Kidd"},"IPS_N Squad","IPS-Northstar mechs.",self.resourcePath.."/mod_icon.png")
+    modApi:addSquad({"Interplanet Northstar","BlackBeard","Drake","Kidd"},"IPS_N Squad","IPS-Northstar mechs.",self.resourcePath.."/mod_icon.png")
 end
 
 return mod
