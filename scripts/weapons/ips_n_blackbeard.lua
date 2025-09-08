@@ -1,11 +1,7 @@
-local wt2 = {
-	Prime_SwordGrapple_Upgrade1 = "+2 Tiles",
-    Prime_SwordGrapple_Upgrade2 = "Buildings Immune",
-}
-for k,v in pairs(wt2) do Weapon_Texts[k] = v end
-
 -- BLACKBEARD: Prime_Swordgrab
 Prime_SwordGrapple = Skill:new{
+	Name = "Assault Grapple",
+	Description = "Grapple themselves into the target and damage them. Damage increase per 2 passed tiles (Max + 3 damage)",
 	Class = "Prime",
 	Icon = "weapons/brute_grapple.png",
 	Rarity = 3,
@@ -19,10 +15,8 @@ Prime_SwordGrapple = Skill:new{
 	Damage = 2,
 	PowerCost = 1,
 	Upgrades = 2,
-	UpgradeList = { "Extend tiles",  "Grid immune"  },
+	UpgradeList = { "+2 Adjacent Tiles","Buildings Immune"},
 	UpgradeCost = { 2, 1},
-    --display image tips by position them in grids--
-    --X-Y coordinate are flip with outmost are 0 while intersect at 4, unit stand at middle grapple in vek then grapple toward mountains, 2nd origin is unit 2nd position--
 	TipImage = {
 		Unit = Point(2,2),
 		Enemy = Point(2,0),
@@ -57,17 +51,20 @@ function Prime_SwordGrapple:GetSkillEffect(p1,p2)
 	local ret = SkillEffect()
 	local direction = GetDirection(p2 - p1)
 	local target = p1 + DIR_VECTORS[direction]
+	
 
 	if not Board:IsValid(target) then
 		return ret
 	end
-
-	local sword_t = target
-	local sword_damage = SpaceDamage(sword_t, self.Damage)
-	--go through path until blocked, change sword animation if not hitting building
 	while not Board:IsBlocked(target, PATH_PROJECTILE) do
 		target = target + DIR_VECTORS[direction]
 	end
+
+	local dist_damage = (p1:Manhattan(target)/2 - 1) <= 3 and (p1:Manhattan(target)- 1) /2 or 3 -- add damage per distance
+	local sword_t = target
+	local sword_damage = SpaceDamage(sword_t, self.Damage + dist_damage)
+	--go through path until blocked, change sword animation if not hitting building
+	
 	-- grid immune
 	if not self.BuildingDamage and Board:IsBuilding(target) then
 		sword_damage.iDamage = DAMAGE_ZERO
@@ -85,8 +82,8 @@ function Prime_SwordGrapple:GetSkillEffect(p1,p2)
 		local left, right
 		left = target - DIR_VECTORS[(direction - 1) % 4]
 		right = target - DIR_VECTORS[(direction + 1) % 4]
-		local left_damage = SpaceDamage(left, self.Damage)
-		local right_damage = SpaceDamage(right, self.Damage)
+		local left_damage = SpaceDamage(left, self.Damage + dist_damage)
+		local right_damage = SpaceDamage(right, self.Damage + dist_damage)
 
 		if not self.BuildingDamage and Board:IsBuilding(left) then
 			left_damage.iDamage = DAMAGE_ZERO
@@ -107,6 +104,7 @@ function Prime_SwordGrapple:GetSkillEffect(p1,p2)
 end
 --Extend attack to 2 tile adjacent to enemies--
 Prime_SwordGrapple_A = Prime_SwordGrapple:new{
+	UpgradeDescription = "Attack 2 tiles adjacent to enemies.",
 	Cleave = true,
 	TipImage = {
 		Unit = Point(2,2),
@@ -118,6 +116,7 @@ Prime_SwordGrapple_A = Prime_SwordGrapple:new{
 }
 --Add Grid immune--
 Prime_SwordGrapple_B = Prime_SwordGrapple:new{
+	UpgradeDescription = "This attack will no longer damage Grid Buildings.",
 	BuildingDamage = false,
 	TipImage = {
 		Unit = Point(2,2),

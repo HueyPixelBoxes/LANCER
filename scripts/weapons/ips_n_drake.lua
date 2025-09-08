@@ -1,11 +1,8 @@
-local wt2 = {
-	Brute_Trenchgun_Upgrade1 = "+2 Damage",
-    Brute_Trenchgun_Upgrade2 = "Push",
-}
-for k,v in pairs(wt2) do Weapon_Texts[k] = v end
 
 -- DRAKE: Brute_Trenchgun
 Brute_Trenchgun = Skill:new	{
+	Name = "Bunker Buster",
+	Description = "Fire a pushing projectile that deals damage then erect a wall behind the Mech.",
 	Class = "Brute",
 	Range = RANGE_PROJECTILE,
 	PathSize = INT_MAX,
@@ -13,11 +10,11 @@ Brute_Trenchgun = Skill:new	{
 	Explo = "explopush1_",
 	Icon = "weapons/brute_tankmech.png",
 	Sound = "/general/combat/explode_small",
-	Damage = 2,
-	Push = 0,
+	Damage = 1,
+	ShieldBack = false,
 	PowerCost = 0, --AE Change
 	Upgrades = 2,
-	--UpgradeList = { "+ 2 Damage",  "Add Push"  },
+	UpgradeList = { "+ 2 Damage",  "Shield Ally Behind"  },
 	UpgradeCost = {3,2},
 	ProjectileArt = "effects/shot_mechtank",
 	LaunchSound = "/weapons/modified_cannons",
@@ -31,8 +28,8 @@ end
 function Brute_Trenchgun:GetSkillEffect(p1, p2)
 	local ret = SkillEffect()
 	local dir = GetDirection(p2 - p1)
-	local front = p1 + DIR_VECTORS[dir] -- space for spawn rock
-	local target = front
+	local back = p1 - DIR_VECTORS[dir] -- space for spawn rock
+	local target = p1 +  DIR_VECTORS[dir]
 
 	while not Board:IsBlocked(target, PATH_PROJECTILE) do
 		target = target + DIR_VECTORS[dir]
@@ -43,28 +40,31 @@ function Brute_Trenchgun:GetSkillEffect(p1, p2)
 	end
 
 
-	local wall_spawn = SpaceDamage(front, 0)
-	if Board:IsValid(front) and not Board:IsPawnSpace(front) then -- spawn rock if valid
+	local wall_spawn = SpaceDamage(back, 0)
+	if Board:IsValid(back) and not Board:IsPawnSpace(back) then -- spawn rock if valid
 		wall_spawn.sPawn = "Wall"
+	elseif Board:IsPawnTeam(p2,TEAM_PLAYER) and self.ShieldBack then -- shield ally if true
+		wall_spawn.iShield = 1
 	end
 
 	local damage = SpaceDamage(target, self.Damage)
-	if self.Push == 1 then
-		damage.iPush = dir
-	end
+	damage.iPush = dir
+
 	ret:AddProjectile(damage, self.ProjectileArt, FULL_DELAY)--"effects/shot_mechtank")
 	ret:AddDamage(wall_spawn);
 	return ret
 end
 -- +2 damage
 Brute_Trenchgun_A = Brute_Trenchgun:new{
-	Damage = 4
+	UpgradeDescription = "Increases damage by 2.",
+	Damage = 3
 }
 -- PushBack
 Brute_Trenchgun_B = Brute_Trenchgun:new{
-	Push = 1
+	UpgradeDescription = "If an ally is behind, give them shield",
+	ShieldBack= true
 }
 Brute_Trenchgun_AB = Brute_Trenchgun:new{
-	Damage = 4,
-	Push = 1
+	Damage = 3,
+	ShieldBack = true
 }

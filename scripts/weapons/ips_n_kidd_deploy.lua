@@ -1,11 +1,8 @@
-local wt2 = {
-	DeploySkill_ForgeSquad_Upgrade1 = "Smoke Behind",
-    DeploySkill_ForgeSquad_Upgrade2 = "Launch Rock",
-}
-for k,v in pairs(wt2) do Weapon_Texts[k] = v end
 
 --Unupgraded version of the forge skill
 Deploy_ForgeShot = Skill:new{
+	Name = "Instant Barricade",
+	Description = "Place a wall in nearby unoccupied tiles.",
 	Rarity = 0,
 	Damage = 0,
 	Range = 1, -- Tooltip?
@@ -50,8 +47,9 @@ end
 Deploy_ForgeShot2 = Deploy_ForgeShot:new{Smoke = 1}
 
 -- Upgrade 2 for Tank B - Laucnh rock
-
 Deploy_ForgeShot3 = Skill:new{
+	Name = "Instant Barricade",
+	Description = "Launch a wall in unoccupied tiles.",
 	Rarity = 0,
 	Damage = 0,
 	Range = RANGE_ARTILLERY, -- Tooltip?
@@ -106,16 +104,19 @@ Deploy_ForgeShot4 = Deploy_ForgeShot3:new{ Smoke = 1}
 
 -- Skill that deploy the tank
 DeploySkill_ForgeSquad = Deployable:new{
+	Name = "Forge Tank",
+	Description = "Deploy tank that place Rock Wall in unoccupied space",
 	ImpactSound = "/impact/generic/mech",
-	Icon = "weapons/deployskill_shieldtank.png",
+	Icon = "weapons/deployskill_tank.png",
 	Rarity = 2,
 	Deployed = "ForgeSquad",
-	Projectile = "effects/shotup_shieldtank.png",
+	Projectile = "effects/shotup_tank.png",
 	Cost = "med",
 	Limited = 1,
 	Range = 1, -- Tooltip?
 	PathSize = 1,
 	PowerCost = 1,
+	UpgradeList = { "Smoke Behind", "Launch Rock" },
 	Upgrades = 2,
 	UpgradeCost = {1,2},
 	LaunchSound = "/weapons/deploy_tank",
@@ -128,10 +129,12 @@ DeploySkill_ForgeSquad = Deployable:new{
 }
 --Smoke
 DeploySkill_ForgeSquad_A = DeploySkill_ForgeSquad:new{
+	UpgradeDescription = "Tile behind you gains Smoke.",
 	Deployed = "ForgeSquad_A",
 }
 --Launch
 DeploySkill_ForgeSquad_B = DeploySkill_ForgeSquad:new{
+	UpgradeDescription = "The Forge Tank instead launch a rock to distant tiles.",
 	Deployed = "ForgeSquad_B",
 	TipImage = {
 		Unit = Point(1,3),
