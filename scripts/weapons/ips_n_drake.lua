@@ -43,7 +43,7 @@ function Brute_Trenchgun:GetSkillEffect(p1, p2)
 	local wall_spawn = SpaceDamage(back, 0)
 	if Board:IsValid(back) and not Board:IsPawnSpace(back) then -- spawn rock if valid
 		wall_spawn.sPawn = "Wall"
-	elseif Board:IsPawnTeam(p2,TEAM_PLAYER) and self.ShieldBack then -- shield ally if true
+	elseif Board:IsPawnTeam(back,TEAM_PLAYER) and self.ShieldBack then -- shield ally if true
 		wall_spawn.iShield = 1
 	end
 
@@ -62,9 +62,20 @@ Brute_Trenchgun_A = Brute_Trenchgun:new{
 -- PushBack
 Brute_Trenchgun_B = Brute_Trenchgun:new{
 	UpgradeDescription = "If an ally is behind, give them shield",
-	ShieldBack= true
+	ShieldBack= true,
+	TipImage = {
+		Unit = Point(2,2),
+		Friendly = Point(2,3),
+		Target = Point(2,0),
+	}
 }
 Brute_Trenchgun_AB = Brute_Trenchgun:new{
 	Damage = 3,
-	ShieldBack = true
+	ShieldBack = true,
+	TipImage = {
+		Unit = Point(2,2),
+		Friendly = Point(2,3),
+		Enemy = Point(2,0),
+		Target = Point(2,0),
+	}
 }
