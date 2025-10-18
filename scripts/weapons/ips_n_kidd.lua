@@ -5,7 +5,6 @@ Cleaner = Skill:new{
 	Class = "Science",
 	Icon = "weapons/whitewash_cleaner.png",
 	Rarity = 2,
-	Explosion = "",
 	LaunchSound = "/weapons/wind",
 	Range = 1, -- Tooltip?
 	Boost = false,

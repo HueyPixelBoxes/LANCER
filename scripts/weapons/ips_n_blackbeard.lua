@@ -51,7 +51,6 @@ function Prime_SwordGrapple:GetSkillEffect(p1,p2)
 	local ret = SkillEffect()
 	local direction = GetDirection(p2 - p1)
 	local target = p1 + DIR_VECTORS[direction]
-	
 
 	if not Board:IsValid(target) then
 		return ret
@@ -85,10 +84,10 @@ function Prime_SwordGrapple:GetSkillEffect(p1,p2)
 		local left_damage = SpaceDamage(left, self.Damage + dist_damage)
 		local right_damage = SpaceDamage(right, self.Damage + dist_damage)
 
-		if not self.BuildingDamage and Board:IsBuilding(left) then
+		if not self.BuildingDamage and Game:IsBuilding(left) then
 			left_damage.iDamage = DAMAGE_ZERO
 		end
-		if not self.BuildingDamage and Board:IsBuilding(right) then
+		if not self.BuildingDamage and Game:IsBuilding(right) then
 			right_damage.iDamage = DAMAGE_ZERO
 		end
 

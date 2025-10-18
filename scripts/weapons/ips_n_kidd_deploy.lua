@@ -15,7 +15,7 @@ Deploy_ForgeShot = Skill:new{
 	TipImage = {
 		Unit = Point(2,1),
 		Target = Point(2,2),
-		CustomPawn = "Deploy_ForgeTank"
+		CustomPawn = "ForgeSquad"
 	}
 }
 

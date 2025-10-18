@@ -27,6 +27,15 @@ a.Blackbeard_broken =	a.MechUnit:new{Image = "units/player/lancer_blackbeard_bro
 a.Blackbeardw_broken =	a.MechUnit:new{Image = "units/player/lancer_blackbeard_w_broken.png", PosX = -17, PosY = -8}
 a.Blackbeard_ns =		a.MechIcon:new{Image = "units/player/lancer_blackbeard_ns.png"}
 
+ANIMS.smoke_remove = Animation:new{
+    Image = "effects/smoke_appear.png",
+    PosX = -23,
+    PosY = 0,
+    Time = 0.08,
+    NumFrames = 6,
+    Frames = { 5, 4, 3, 2, 1, 0 },
+}
+
 --deploy are in img/units/mission
 
 --Weapons - the first path must have full path,included resPath part
