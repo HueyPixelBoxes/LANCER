@@ -20,9 +20,9 @@ end
 -- create animations for our mech with our imported files.
 -- note how the animations starts searching from /img/
 local a = ANIMS
-a.Blackbeard =			a.MechUnit:new{Image = "units/player/lancer_blackbeard.png", PosX = -24, PosY = -12}
+a.Blackbeard =			a.MechUnit:new{Image = "units/player/lancer_blackbeard.png", PosX = -25, PosY = -12}
 a.Blackbearda =			a.MechUnit:new{Image = "units/player/lancer_blackbeard_a.png", PosX = -25, PosY = -12, NumFrames = 4 }
-a.Blackbeardw =			a.MechUnit:new{Image = "units/player/lancer_blackbeard_w.png", PosX = -21, PosY = -6 }
+a.Blackbeardw =			a.MechUnit:new{Image = "units/player/lancer_blackbeard_w.png", PosX = -25, PosY = -12}
 a.Blackbeard_broken =	a.MechUnit:new{Image = "units/player/lancer_blackbeard_broken.png", PosX = -16, PosY = -12}
 a.Blackbeardw_broken =	a.MechUnit:new{Image = "units/player/lancer_blackbeard_w_broken.png", PosX = -17, PosY = -8}
 a.Blackbeard_ns =		a.MechIcon:new{Image = "units/player/lancer_blackbeard_ns.png"}
