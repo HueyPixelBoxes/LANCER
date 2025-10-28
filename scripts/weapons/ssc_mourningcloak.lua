@@ -3,7 +3,7 @@
 
 Tele_Sword = Skill:new{
     Name = "Variable Sword",
-	Description = "Teleport in movement range and attack a target, pushing it. Create smoke in adjacent tiles if teleporting into smoke.",
+	Description = "Teleport in movement range and attack a target, pushing it. Attack from smoke deal damage.",
 	Class = "Prime",
 	Range = 1,
 	PathSize = 1,
@@ -11,11 +11,11 @@ Tele_Sword = Skill:new{
 	Icon = "weapons/var_sword.png",
 	PowerCost = 0, --AE Change
 	Upgrades = 2,
-	UpgradeList = { "Add Push",  "+ 2 Damage" },
+	UpgradeList = { "",  "+ 2 Damage" },
 	UpgradeCost = {2,3},
-	Damage = 1,
+	Damage = 2,
 	TwoClick = true,
-    PushAdjacent = false,
+    SpreadSmoke = false,
 	LaunchSound = "/weapons/sword",
 	TipImage = {
 		Unit = Point(2,3),
@@ -65,23 +65,14 @@ end
 function Tele_Sword:GetFinalEffect(p1,p2,p3) -- normal melee, spear animation
 	local ret = SkillEffect()
 	local direction = GetDirection(p3 - p2)
-	local damage = SpaceDamage(p3, self.Damage, direction)
+	local damage = SpaceDamage(p3, Board:IsSmoke(p2) and self.Damage or 0, direction)
+
 	damage.sAnimation = "explospear1".."_"..direction
 	ret:AddTeleport(p1,p2,0) -- just teleport to unoccupied space
-	if self.PushAdjacent then
-		for dir = DIR_START, DIR_END do
-			if p1 + DIR_VECTORS[dir] ~= p3 then -- skip adjacent spaces to prevent accidental knock into mech
-				local push = SpaceDamage(p1 + DIR_VECTORS[dir], 0, dir)
-				push.sAnimation = "airpush_"..dir
-				ret:AddDamage(push) -- add smoke to adjacent space
-			end
-		end
-	end
-
-	ret:AddDelay(0.6)
+	ret:AddDelay(0.4)
 	ret:AddSound(self.LaunchSound)
 
-	if Board:IsSmoke(p2) then
+	if self.SpreadSmoke and Board:IsSmoke(p2) or Board:IsSmoke(p1) then
 		for dir = DIR_START, DIR_END do
 			local smoke_spread = SpaceDamage(p2 + DIR_VECTORS[dir], 0)
 			smoke_spread.iSmoke = EFFECT_CREATE
@@ -98,15 +89,15 @@ end
 
 
 Tele_Sword_A = Tele_Sword:new{
-    UpgradeDescription = "Push adjacent tiles when teleporting.",
-    PushAdjacent = true,
+    UpgradeDescription = "Spread smokes when teleporting.",
+	SpreadSmoke = true,
 }
 
 Tele_Sword_B = Tele_Sword:new{
     UpgradeDescription = "Deal double damage to target not adjacent to Veks.",
-	Damage = 3,
+	Damage = 4,
 }
 Tele_Sword_AB = Tele_Sword:new{
-    PushAdjacent = true,
-	Damage = 3,
+	SpreadSmoke = true,
+	Damage = 4,
 }
