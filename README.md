@@ -10,6 +10,6 @@ HORUS:
 HARRISION ARMORY:
 
 Contributors:
-  Coder: [Convicted Genius/HueyPixelBoxes](https://github.com/HueyPixelBoxes)<br>
-  Artists: [goatnorth](https://github.com/goatnorth),<br>
+  Main Coder+ Spriter: [Convicted Genius/HueyPixelBoxes](https://github.com/HueyPixelBoxes)<br>
+  Artists (Blackbeard): [goatnorth](https://github.com/goatnorth),<br>
   Brainstorming: [CockroachTeaParty from Discord](https://www.twitch.tv/cockroachteaparty)<br>
