@@ -11,7 +11,14 @@ local files = {
 	"blackbeard_w_broken.png",
 	"blackbeard_broken.png",
 	"blackbeard_ns.png",
-	"blackbeard_h.png"
+	"blackbeard_h.png",
+	"kidd.png",
+	"kidd_a.png",
+	"kidd_w.png",
+	"kidd_w_broken.png",
+	"kidd_broken.png",
+	"kidd_ns.png",
+	"kidd_h.png",
 }
 -- iterate our files and add the assets so the game can find them.
 for _, file in ipairs(files) do
@@ -26,6 +33,13 @@ a.Blackbeardw =			a.MechUnit:new{Image = "units/player/lancer_blackbeard_w.png",
 a.Blackbeard_broken =	a.MechUnit:new{Image = "units/player/lancer_blackbeard_broken.png", PosX = -16, PosY = -12}
 a.Blackbeardw_broken =	a.MechUnit:new{Image = "units/player/lancer_blackbeard_w_broken.png", PosX = -17, PosY = -8}
 a.Blackbeard_ns =		a.MechIcon:new{Image = "units/player/lancer_blackbeard_ns.png"}
+
+a.Kidd =			a.MechUnit:new{Image = "units/player/lancer_kidd.png", PosX = -25, PosY = -12}
+a.Kidda =			a.MechUnit:new{Image = "units/player/lancer_kidd_a.png", PosX = -25, PosY = -10, NumFrames = 4 }
+a.Kiddw =			a.MechUnit:new{Image = "units/player/lancer_kidd_w.png", PosX = -20, PosY = 5}
+a.Kidd_broken =		a.MechUnit:new{Image = "units/player/lancer_kidd_broken.png", PosX = -27, PosY = -5}
+a.Kiddw_broken =	a.MechUnit:new{Image = "units/player/lancer_kidd_w_broken.png", PosX = -17, PosY = -8}
+a.Kidd_ns =			a.MechIcon:new{Image = "units/player/lancer_kidd_ns.png"}
 
 ANIMS.smoke_remove = Animation:new{
     Image = "effects/smoke_appear.png",
