@@ -121,6 +121,7 @@ DeploySkill_ForgeSquad = Deployable:new{
 	UpgradeCost = {1,2},
 	LaunchSound = "/weapons/deploy_tank",
 	TipImage = {
+		CustomPawn = "YOU_MECH",
 		Unit = Point(2,3),
 		Target = Point(2,1),
 		Second_Origin = Point(2,1),
