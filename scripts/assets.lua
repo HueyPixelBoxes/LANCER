@@ -54,12 +54,12 @@ a.Kidd_broken = a.MechUnit:new { Image = "units/player/lancer_kidd_broken.png", 
 a.Kiddw_broken = a.MechUnit:new { Image = "units/player/lancer_kidd_w_broken.png", PosX = -17, PosY = -8 }
 a.Kidd_ns = a.MechIcon:new { Image = "units/player/lancer_kidd_ns.png" }
 
-a.Kidd = a.MechUnit:new { Image = "units/player/lancer_drake.png", PosX = -25, PosY = -12 }
-a.Kidda = a.MechUnit:new { Image = "units/player/lancer_drake_a.png", PosX = -25, PosY = -10, NumFrames = 4 }
-a.Kiddw = a.MechUnit:new { Image = "units/player/lancer_drake_w.png", PosX = -20, PosY = 5 }
-a.Kidd_broken = a.MechUnit:new { Image = "units/player/lancer_drake_broken.png", PosX = -27, PosY = -5 }
-a.Kiddw_broken = a.MechUnit:new { Image = "units/player/lancer_drake_w_broken.png", PosX = -17, PosY = -8 }
-a.Kidd_ns = a.MechIcon:new { Image = "units/player/lancer_drake_ns.png" }
+a.Drake = a.MechUnit:new { Image = "units/player/lancer_drake.png", PosX = -25, PosY = -12 }
+a.Drakea = a.MechUnit:new { Image = "units/player/lancer_drake_a.png", PosX = -25, PosY = -10, NumFrames = 4 }
+a.Drakew = a.MechUnit:new { Image = "units/player/lancer_drake_w.png", PosX = -20, PosY = -2 }
+a.Drake_broken = a.MechUnit:new { Image = "units/player/lancer_drake_broken.png", PosX = -20, PosY = -10 }
+a.Drakew_broken = a.MechUnit:new { Image = "units/player/lancer_drake_w_broken.png", PosX = -20, PosY = 0 }
+a.Drake_ns = a.MechIcon:new { Image = "units/player/lancer_drake_ns.png" }
 
 a.Subaltern_squad = a.MechUnit:new { Image = "units/player/lancer_subaltern_squad.png", PosX = -13, PosY = 2 }
 a.Subaltern_squada = a.MechUnit:new { Image = "units/player/lancer_subaltern_squad_a.png", PosX = -13, PosY = 2, NumFrames = 2 }
