@@ -15,7 +15,7 @@ Brute_Trenchgun = Skill:new	{
 	PowerCost = 0, --AE Change
 	Upgrades = 2,
 	UpgradeList = { "+ 2 Damage",  "Shield Ally Behind"  },
-	UpgradeCost = {3,2},
+	UpgradeCost = {2,1},
 	ProjectileArt = "effects/shot_mechtank",
 	LaunchSound = "/weapons/modified_cannons",
 	ImpactSound = "/impact/generic/explosion",
@@ -41,7 +41,7 @@ function Brute_Trenchgun:GetSkillEffect(p1, p2)
 
 
 	local wall_spawn = SpaceDamage(back, 0)
-	if Board:IsValid(back) and not Board:IsPawnSpace(back) then -- spawn rock if valid
+	if Board:IsValid(back) and not Board:IsPawnSpace(back) and not Board:IsBlocked(back, PATH_FLYER) then -- spawn rock if valid
 		wall_spawn.sPawn = "Wall"
 	elseif Board:IsPawnTeam(back,TEAM_PLAYER) and self.ShieldBack then -- shield ally if true
 		wall_spawn.iShield = 1
