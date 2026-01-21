@@ -1,8 +1,8 @@
 local description = "SSC squad."
 
 local mod = {
-    id = "ssc",
-    name = "SSC",
+    id = "horus",
+    name = "HORUS",
     version = "1",
     modApiVersion = "2.9.2",
     icon = "img/mod_icon.png",
